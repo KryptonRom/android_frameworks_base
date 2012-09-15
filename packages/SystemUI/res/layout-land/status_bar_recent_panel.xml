@@ -88,7 +88,8 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
                 android:clipToPadding="false"
-                android:clipChildren="false">
+                android:clipChildren="false"
+				android:fitsSystemWindows="true">
 
                 <com.android.systemui.recent.RecentsHorizontalScrollView android:id="@+id/recents_container"
                     android:layout_width="wrap_content"
@@ -108,6 +109,15 @@
 
                 </com.android.systemui.recent.RecentsHorizontalScrollView>
 
+                <ImageView
+					android:id="@+id/recents_clear"
+					android:clickable="true"
+					android:layout_width="50dp"
+					android:layout_height="50dp"
+					android:scaleType="center"
+					android:layout_gravity="top|right"
+					android:src="@drawable/ic_notify_clear" />
+
                 <include layout="@layout/status_bar_no_recent_apps"
                     android:id="@+id/recents_no_apps"
                     android:layout_width="match_parent"
@@ -115,8 +125,10 @@
                     android:layout_gravity="center"
                     android:visibility="invisible" />
 
-            </FrameLayout>
+           </FrameLayout>
 
-    </LinearLayout>
+		</LinearLayout>
+
+	</FrameLayout>
 
 </com.android.systemui.recent.RecentsPanelView>

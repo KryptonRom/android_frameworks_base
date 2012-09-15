@@ -101,6 +101,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
     private boolean mFitThumbnailToXY;
     private int mRecentItemLayoutId;
     private boolean mHighEndGfx;
+    private ImageView mClearRecents;
 
     private RecentsActivity mRecentsActivity;
 
@@ -126,6 +127,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
         public void drawFadedEdges(Canvas c, int left, int right, int top, int bottom);
         public void setOnScrollListener(Runnable listener);
         public void swipeAllViewsInLayout();
+        public void removeAllViewsInLayout();
     }
 
     private final class OnLongClickDelegate implements View.OnLongClickListener {
@@ -366,6 +368,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
             // if there are no apps, bring up a "No recent apps" message
             mRecentsNoApps.setAlpha(1f);
             mRecentsNoApps.setVisibility(getTasks() == 0 ? View.VISIBLE : View.INVISIBLE);
+            mClearRecents.setVisibility(noApps ? View.GONE : View.VISIBLE);
             onAnimationEnd(null);
             setFocusable(true);
             setFocusableInTouchMode(true);
@@ -479,6 +482,16 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
         mRecentsScrim = findViewById(R.id.recents_bg_protect);
         mRecentsNoApps = findViewById(R.id.recents_no_apps);
 	//mRecentsRamBar = findViewById(R.id.recents_ram_bar);
+
+        mClearRecents = (ImageView) findViewById(R.id.recents_clear);
+        if (mClearRecents != null){
+            mClearRecents.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mRecentsContainer.removeAllViewsInLayout();
+                }
+            });
+        }
 
         if (mRecentsScrim != null) {
             mHighEndGfx = ActivityManager.isHighEndGfx();
