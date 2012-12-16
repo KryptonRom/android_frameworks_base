@@ -2295,21 +2295,21 @@ public final class Settings {
 
         /**
          * Whether the phone ringtone should be played in an increasing manner
-         * 
+         *
          * @hide
          */
         public static final String INCREASING_RING = "increasing_ring";
 
         /**
          * Increase ringtone volume each ringing interval
-         * 
+         *
          * @hide
          */
         public static final String INCREASING_RING_INTERVAL = "increasing_ring_interval";
 
         /**
          * Volume level to start at for increasing ringtone
-         * 
+         *
          * @hide
          */
         public static final String INCREASING_RING_MIN_VOLUME = "increasing_ring_min_volume";
@@ -2757,7 +2757,7 @@ public final class Settings {
          * @hide
          */
         public static final String EGG_MODE = "egg_mode";
- 
+
         /**
          * Whether national data roaming should be used.
          * @hide
@@ -2837,13 +2837,13 @@ public final class Settings {
          * @hide
          */
         public static final String LOCKSCREEN_NOTIFICATIONS_HEIGHT = "lockscreen_notifications_height";
-        
+
         /**
          * Changes the offset of the notifications to the top of the screen
          * @hide
          */
         public static final String LOCKSCREEN_NOTIFICATIONS_OFFSET_TOP = "lockscreen_notifications_offset_top";
-        
+
         /**
          * Enables a privacy mode which disables showing notifications.
          * @hide
@@ -3400,6 +3400,13 @@ public final class Settings {
          * @hide
          */
         public static final String APP_SIDEBAR_EXCLUDE_LIST = "app_sidebar_exclude_list";
+
+       /**
+        * Whether to control brightness from status bar
+        *
+        * @hide
+        */
+       public static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
