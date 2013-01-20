@@ -20,6 +20,7 @@ package com.android.server.power;
 
 import android.app.ActivityManagerNative;
 import android.app.AlertDialog;
+import android.app.PacBusyDialog;
 import android.app.Dialog;
 import android.app.IActivityManager;
 import android.app.ProgressDialog;
@@ -242,16 +243,23 @@ public final class ShutdownThread extends Thread {
             sIsStarted = true;
         }
 
+
+		final int shutdownMessageId = mRebootReason == null
+                ? com.android.internal.R.string.shutdown_progress
+                : com.android.internal.R.string.reboot_progress;
+                
         // throw up an indeterminate system dialog to indicate radio is
         // shutting down.
-        ProgressDialog pd = new ProgressDialog(context);
-        pd.setTitle(mReboot ? context.getText(com.android.internal.R.string.global_action_reboot) :
-                context.getText(com.android.internal.R.string.power_off));
-        pd.setMessage(mReboot ? context.getText(com.android.internal.R.string.reboot_progress) :
-                context.getText(com.android.internal.R.string.shutdown_progress));
-        pd.setIndeterminate(true);
-        pd.setCancelable(false);
+		PacBusyDialog pd = new PacBusyDialog(context, android.R.style.Theme_Translucent_NoTitleBar);
+        //pd.setTitle(context.getText(com.android.internal.R.string.power_off));
+        pd.setMessage(context.getText(shutdownMessageId));
+
         pd.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+		pd.getWindow().addFlags(
+                 WindowManager.LayoutParams.FLAG_DIM_BEHIND
+                 | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+        pd.getWindow().setDimAmount(1);
+        pd.setCancelable(false);
 
         pd.show();
 
