@@ -3198,6 +3198,41 @@ public final class Settings {
         public static final String CLEAR_RECENTS_BUTTON_LOCATION = "clear_recents_button_location";
 
         /**
+        * Whether or not to use the app sidebar
+        *
+        * @hide
+        */
+       public static final String APP_SIDE_BAR_ENABLED = "app_sidebar_enabled";
+
+        /**
+         * How to sort and order the items in the app sidebar
+         *
+         * @hide
+         */
+        public static final String APP_SIDEBAR_SORT_TYPE = "app_sidebar_sort_type";
+
+        /**
+         * How to sort and order the items in the app sidebar
+         *
+         * @hide
+         */
+        public static final String APP_SIDEBAR_TRANSPARENCY = "app_sidebar_transparency";
+
+        /**
+         * Width and height of items in sidebar
+         *
+         * @hide
+         */
+        public static final String APP_SIDEBAR_ITEM_SIZE = "app_sidebar_item_size";
+
+        /**
+         * List of apps to exclude from sidebar
+         *
+         * @hide
+         */
+        public static final String APP_SIDEBAR_EXCLUDE_LIST = "app_sidebar_exclude_list";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -7380,3 +7415,4 @@ public final class Settings {
         return "android-" + Long.toHexString(androidId);
     }
 }
+

@@ -36,4 +36,9 @@
     <color name="batterymeter_charge_color">#FFFFFFFF</color>
     <color name="batterymeter_bolt_color">#B2000000</color><!-- 70% black -->
     <color name="status_bar_clock_color">#FFFFFFFF</color>
+
+    <!-- app sidebar info bubble text color -->
+    <color name="app_sidebar_info_bubble_text_color">#ff0099cc</color>
+    <color name="app_sidebar_info_bubble_text_shadow_color">#ff333333</color>
+
 </resources>
