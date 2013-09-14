@@ -299,7 +299,7 @@ public class NavigationBarView extends LinearLayout implements NavigationCallbac
     public View getCurrentView() {
         return mCurrentView;
     }
-
+    
     public boolean isInEditMode() {
         return mInEditMode;
     }
