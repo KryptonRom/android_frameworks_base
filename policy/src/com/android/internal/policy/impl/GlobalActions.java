@@ -290,44 +290,56 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
             });
 
         // next: reboot
-        mItems.add(
-            new SinglePressAction(R.drawable.ic_lock_reboot,
-                        R.string.global_action_reboot) {
-                public void onPress() {
-                    showDialog(mKeyguardShowing, mDeviceProvisioned, true);
-                }
+        // only shown if enabled, enabled by default
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.POWER_MENU_REBOOT_ENABLED, 1) == 1) {
+            mItems.add(
+                new SinglePressAction(R.drawable.ic_lock_reboot, R.string.global_action_reboot) {
+                    public void onPress() {
+                        showDialog(mKeyguardShowing, mDeviceProvisioned, true);
+                    }
 
-                public boolean onLongPress() {
-                    return true;
-                }
+                    public boolean onLongPress() {
+                        mWindowManagerFuncs.rebootSafeMode(true);
+                        return true;
+                    }
 
-                public boolean showDuringKeyguard() {
-                    return true;
-                }
+                    public boolean showDuringKeyguard() {
+                        return true;
+                    }
 
-                public boolean showBeforeProvisioning() {
-                    return true;
-                }
-            }
-        );
+                    public boolean showBeforeProvisioning() {
+                        return true;
+                    }
+                });
+        }
 
         // next: screenshot
-        mItems.add(
-            new SinglePressAction(R.drawable.ic_lock_screenshot,
-                        R.string.global_action_screenshot) {
-                public void onPress() {
-                    takeScreenshot();
-                }
+        // only shown if enabled, disabled by default
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.POWER_MENU_SCREENSHOT_ENABLED, 0) == 1) {
+            mItems.add(
+                new SinglePressAction(R.drawable.ic_lock_screenshot, R.string.global_action_screenshot) {
+                    public void onPress() {
+                        takeScreenshot();
+                    }
 
-                public boolean showDuringKeyguard() {
-                    return true;
-                }
+                    public boolean showDuringKeyguard() {
+                        return true;
+                    }
 
-                public boolean showBeforeProvisioning() {
-                    return true;
-                }
-            });
-
+                    public boolean showBeforeProvisioning() {
+                        return true;
+                    }
+                });
+        }
+        
+		// next: airplane mode
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.POWER_MENU_AIRPLANE_ENABLED, 1) == 1) {
+            mItems.add(mAirplaneModeOn);
+        }
+        
         // next: bug report, if enabled
         if (Settings.Secure.getInt(mContext.getContentResolver(),
                 Settings.Secure.BUGREPORT_IN_POWER_MENU, 0) != 0) {
@@ -377,18 +389,17 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                 });
             }
 
-            // next: airplane mode
-            mItems.add(mAirplaneModeOn);
-
-            // last: silent mode
-            if (SHOW_SILENT_TOGGLE) {
-                mItems.add(mSilentModeAction);
-            }
-
             // one more thing: optionally add a list of users to switch to
             if (SystemProperties.getBoolean("fw.power_user_switcher", false)) {
                 addUsersToMenu(mItems);
             }
+        }
+
+        // last: silent mode
+        if ((Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.POWER_MENU_SILENT_ENABLED, 1) == 1) &&
+                (SHOW_SILENT_TOGGLE)) {
+            mItems.add(mSilentModeAction);
         }
 
         mAdapter = new MyAdapter();
@@ -411,6 +422,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                         return mAdapter.getItem(position).onLongPress();
                     }
         });
+
         dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
 
         dialog.setOnDismissListener(this);
@@ -600,12 +612,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
     /** {@inheritDoc} */
     public void onDismiss(DialogInterface dialog) {
         if (mShowSilentToggle) {
-            try {
-                mContext.unregisterReceiver(mRingerModeReceiver);
-            } catch (IllegalArgumentException ie) {
-                // ignore this
-                Log.w(TAG, ie);
-            }
+            mContext.unregisterReceiver(mRingerModeReceiver);
         }
     }
 
