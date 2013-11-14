@@ -78,7 +78,6 @@ public class DessertCaseView extends FrameLayout {
                                             //         -- mcleron
 
             R.drawable.dessert_keylimepie,  // from an alternative timeline
-            R.drawable.dessert_paranoid,    // Paranoid Face
     };
     private static final int[] XXRARE_PASTRIES = {
             R.drawable.dessert_zombiegingerbread, // thx hackbod
