@@ -3384,6 +3384,12 @@ public final class Settings {
          public static final String LISTVIEW_ANIMATION = "listview_animation";
 
         /**
+         * Whether power menu screen record is enabled
+         * @hide
+         */
+        public static final String POWER_MENU_SCREENRECORD_ENABLED = "power_menu_screenrecord_enabled";
+
+        /**
          * ListView Interpolators
          * 0 == None
          * 1 == accelerate_interpolator
