@@ -10908,4 +10908,11 @@ public class WindowManagerService extends IWindowManager.Stub
     public void addSystemUIVisibilityFlag(int flag) {
         mLastStatusBarVisibility |= flag;
     }
+
+    /* @hide */
+    @Override
+    public void updateStatusBarNavBarHeight() {
+        mPolicy.updateStatusBarNavBarHeight();
+    }
+
 }
