@@ -406,6 +406,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.SCREEN_BRIGHTNESS_MODE),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.NAVBAR_LEFT_IN_LANDSCAPE), false, this);
+            updateSettings();
             updateBrightness();
         }
 
@@ -421,8 +424,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
             }
             updateBrightness();
             updateBatteryIcons();
+            updateSettings();
         }
-        
+
         private void updateBrightness() {
             ContentResolver resolver = mContext.getContentResolver();
             boolean autoBrightness = Settings.System.getIntForUser(
@@ -3060,6 +3064,16 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
             mNavigationBarView.updateSettings();
         }
         super.userSwitched(newUserId);
+    }
+
+    private void updateSettings() {
+        ContentResolver resolver = mContext.getContentResolver();
+
+        if (mNavigationBarView != null) {
+            boolean navLeftInLandscape = Settings.System.getInt(resolver,
+                    Settings.System.NAVBAR_LEFT_IN_LANDSCAPE, 0) == 1;
+            mNavigationBarView.setLeftInLandscape(navLeftInLandscape);
+        }
     }
 
     private void resetUserSetupObserver() {

@@ -2894,6 +2894,13 @@ public final class Settings {
         public static final String CUSTOM_SOUND_EFFECTS_PATH = "custom_sound_effects_path";
 
         /**
+         * Whether navigation bar is placed on the left side in landscape mode
+         *
+         * @hide
+         */
+        public static final String NAVBAR_LEFT_IN_LANDSCAPE = "navigation_bar_left";
+
+        /**
          * A list of packages to exclude from being displayed as lockscreen notifications.
          * This should be a string of packages separated by |
          * @hide
