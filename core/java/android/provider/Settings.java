@@ -3061,6 +3061,20 @@ public final class Settings {
         public static final String TELO_RADIO_2G_SCREENOFF = "telo_radio_2g_screenoff";
         
         /**
+         * Should Dialer suggest nearby phone numbers
+         *
+         * @hide
+         */
+        public static final String ENABLE_DIALER_SUGGESTIONS = "enable_dialer_suggestions";
+
+        /**
+         * Should Dialer reverse look up names for unknown phone numbers
+         *
+         * @hide
+         */
+        public static final String ENABLE_DIALER_REVERSE_LOOKUP = "enable_dialer_reverse_lookup";
+
+        /**
          * TeloRadio time to change 2g when screenoff
          * @hide
          */
