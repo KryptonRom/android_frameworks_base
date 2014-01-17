@@ -1119,15 +1119,15 @@ public final class Settings {
         }
 
         /**
-	 * Need to AOKP Custom Systems Animations
-	 *
-	 * Look up a boolean in the database.
-	 * @param resolver to access the database with
-	 * @param name to look up in the table
-	 * @param def Value to return if the setting is not defined.
-	 * @return The setting's current value, or 'def' if it is not defined
-	 * or not a valid boolean.
-	 */
+     * Need to AOKP Custom Systems Animations
+     *
+     * Look up a boolean in the database.
+     * @param resolver to access the database with
+     * @param name to look up in the table
+     * @param def Value to return if the setting is not defined.
+     * @return The setting's current value, or 'def' if it is not defined
+     * or not a valid boolean.
+     */
         public static boolean getBoolean(ContentResolver cr, String name, boolean def) {
             String v = getString(cr, name);
             try {
@@ -1139,24 +1139,24 @@ public final class Settings {
                 return def;
             }
         }
-	/**
-	 * Need to AOKP Custom Systems Animations
-	 *
-	 * Convenience function for updating a single settings value as a
-	 * boolean. This will either create a new entry in the table if the
-	 * given name does not exist, or modify the value of the existing row
-	 * with that name. Note that internally setting values are always
-	 * stored as strings, so this function converts the given value to a
-	 * string before storing it.
-	 *
-	 * @param cr The ContentResolver to access.
-	 * @param name The name of the setting to modify.
-	 * @param value The new value for the setting.
-	 * @return true if the value was set, false on database errors
-	 */
+    /**
+     * Need to AOKP Custom Systems Animations
+     *
+     * Convenience function for updating a single settings value as a
+     * boolean. This will either create a new entry in the table if the
+     * given name does not exist, or modify the value of the existing row
+     * with that name. Note that internally setting values are always
+     * stored as strings, so this function converts the given value to a
+     * string before storing it.
+     *
+     * @param cr The ContentResolver to access.
+     * @param name The name of the setting to modify.
+     * @param value The new value for the setting.
+     * @return true if the value was set, false on database errors
+     */
         public static boolean putBoolean(ContentResolver cr, String name, boolean value) {
             return putString(cr, name, value ? "1" : "0");
-        } 
+        }
 
         /**
          * Look up a name in the database.
@@ -2628,6 +2628,86 @@ public final class Settings {
         public static final String LOCKSCREEN_BLUR_RADIUS = "lockscreen_blur_radius";
 
         /**
+         * Enables/disables lockscreen notifications
+         * @hide
+         */
+        public static final String LOCKSCREEN_NOTIFICATIONS = "lockscreen_notifications";
+
+        /**
+         * Turn screen on when device is pulled out of pocket
+         * @hide
+         */
+        public static final String LOCKSCREEN_NOTIFICATIONS_POCKET_MODE = "lockscreen_notifications_pocket_mode";
+
+        /**
+         * Turn screen on when pulled out of pocket even if no notifications are pending
+         * @hide
+         */
+        public static final String LOCKSCREEN_NOTIFICATIONS_SHOW_ALWAYS = "lockscreen_notifications_show_always";
+
+        /**
+         * Hide low priority notifications such as google now weather notifications from lockscreen notifications
+         * @hide
+         */
+        public static final String LOCKSCREEN_NOTIFICATIONS_HIDE_LOW_PRIORITY = "lockscreen_notifications_hide_low_priority";
+
+        /**
+         * Hide non clearable notifications from lockscreen notifications
+         * @hide
+         */
+        public static final String LOCKSCREEN_NOTIFICATIONS_HIDE_NON_CLEARABLE = "lockscreen_notifications_hide_non_clearable";
+
+        /**
+         * Allows dismissing even non-clearable notifications from lockscreen notifications.
+         * Of course, this doesn't really dismiss them, they're just not shown on lockscreen anymore.
+         * @hide
+         */
+        public static final String LOCKSCREEN_NOTIFICATIONS_DISMISS_ALL = "lockscreen_notifications_dismiss_all";
+
+        /**
+         * Toggle between extended and normal view by longpressing the notification
+         * @hide
+         */
+        public static final String LOCKSCREEN_NOTIFICATIONS_EXPANDED_VIEW = "lockscreen_notifications_expanded_view";
+
+        /**
+         * Show lockscreen notifications extended when possible
+         * @hide
+         */
+        public static final String LOCKSCREEN_NOTIFICATIONS_FORCE_EXPANDED_VIEW = "lockscreen_notifications_force_expanded_view";
+
+        /**
+         * Wakes the device when a new notifications is received
+         * @hide
+         */
+        public static final String LOCKSCREEN_NOTIFICATIONS_WAKE_ON_NOTIFICATION = "lockscreen_notifications_wake_on_notification";
+
+        /**
+         * Sets the count of notifications shown at once
+         * @hide
+         */
+        public static final String LOCKSCREEN_NOTIFICATIONS_HEIGHT = "lockscreen_notifications_height";
+        
+        /**
+         * Changes the offset of the notifications to the top of the screen
+         * @hide
+         */
+        public static final String LOCKSCREEN_NOTIFICATIONS_OFFSET_TOP = "lockscreen_notifications_offset_top";
+        
+        /**
+         * Enables a privacy mode which disables showing notifications.
+         * @hide
+         */
+        public static final String LOCKSCREEN_NOTIFICATIONS_PRIVACY_MODE = "lockscreen_notifications_privacy_mode";
+
+       /**
+         * A list of packages to exclude from being displayed as lockscreen notifications.
+         * This should be a string of packages separated by |
+         * @hide
+         */
+        public static final String LOCKSCREEN_NOTIFICATIONS_EXCLUDED_APPS = "lockscreen_notifications_excluded_apps";
+
+        /**
          * MediaScanner behavior on boot.
          * 0 = enabled
          * 1 = ask (notification)
@@ -2636,8 +2716,8 @@ public final class Settings {
          */
          public static final String MEDIA_SCANNER_ON_BOOT = "media_scanner_on_boot";
 
-        
-        /*
+
+        /**
          * Custom navring actions
          *
          * @hide
@@ -2648,32 +2728,32 @@ public final class Settings {
             "navigation_ring_targets_2",
         };
 
-	/**
+        /**
          * Whether to show the network status in the status bar
          * @hide
          */
         public static final String STATUS_BAR_NETWORK_STATS = "status_bar_network_stats";
- 
+
         /**
          * Frequency at which stats are updated, in milliseconds
          * @hide
          */
         public static final String STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL = "status_bar_network_stats_update_frequency";
 
-	/**
+        /**
          * Network stats Color style
          * @hide
          */
-        public static final String STATUS_BAR_NETWORK_COLOR = "status_bar_network_usage_color"; 
+        public static final String STATUS_BAR_NETWORK_COLOR = "status_bar_network_usage_color";
 
-	/**
+        /**
          * Network stats hide if there's no traffic
          * @hide
          */
-        public static final String STATUS_BAR_NETWORK_HIDE = "status_bar_network_hide";  
+        public static final String STATUS_BAR_NETWORK_HIDE = "status_bar_network_hide";
 
         /**
-         * Whether to wake the screen with the volume keys, the value is boolean. 
+         * Whether to wake the screen with the volume keys, the value is boolean.
          * @hide
          */
         public static final String VOLUME_WAKE_SCREEN = "volume_wake_screen";
@@ -2781,7 +2861,7 @@ public final class Settings {
          */
         public static final String QUIET_HOURS_DIM = "quiet_hours_dim";
 
-	/**
+        /**
          * whether which Ram Usage Bar mode is used on recent switcher
          * 0 = none, 1 = only app use, 2 = app and cache use, 3 = app, cache and system use
          * @hide
@@ -2818,23 +2898,23 @@ public final class Settings {
           */
          public static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
 
-         /**  
+         /**
           * Custom System Animations
-   	  *  
+         *
           * @hide
-          */  
-         public static final String[] ACTIVITY_ANIMATION_CONTROLS = new String[] {  
+          */
+         public static final String[] ACTIVITY_ANIMATION_CONTROLS = new String[] {
                 "activity_open",
                 "activity_close",
-                "task_open",  
-                "task_close",  
+                "task_open",
+                "task_close",
                 "task_to_front",
-                "task_to_back",  
-                "wallpaper_open",  
-                "wallpaper_close",  
-                "wallpaper_intra_open",  
-                "wallpaper_intra_close",  
-         };  
+                "task_to_back",
+                "wallpaper_open",
+                "wallpaper_close",
+                "wallpaper_intra_open",
+                "wallpaper_intra_close",
+         };
          public static final String ANIMATION_CONTROLS_DURATION = "animation_controls_duration";
          public static final String ANIMATION_CONTROLS_NO_OVERRIDE = "animation_controls_no_override";
 
@@ -2865,7 +2945,7 @@ public final class Settings {
         /**
          * Force dual panel for settings
          */
-        public static final String FORCE_DUAL_PANEL = "force_dualpanel"; 
+        public static final String FORCE_DUAL_PANEL = "force_dualpanel";
 
         /**
          * ListView Animations
