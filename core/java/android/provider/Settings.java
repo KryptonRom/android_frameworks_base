@@ -3312,7 +3312,13 @@ public final class Settings {
         public static final String NON_INTRUSIVE_INCALL = "non_intrusive_incall";
 
         /**
-         * Setting to show determine if AOSP dialer is used
+         * HALO color, default is 0xff33b5e5 (normal)
+         * @hide
+         */
+        public static final String HALO_COLOR = "halo_color";
+
+        /**
+		 * Setting to show determine if AOSP dialer is used
          * @hide
          */
         public static final String AOSP_DIALER = "aosp_dialer";
