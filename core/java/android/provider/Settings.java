@@ -2758,11 +2758,6 @@ public final class Settings {
             "navigation_ring_targets_2",
         };
 
-        /**
-         * Sets navigation bar height in percent
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
 
         /**
          * Enable/disable statusbar network indicators
