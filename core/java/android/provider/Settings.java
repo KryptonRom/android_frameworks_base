@@ -2758,6 +2758,14 @@ public final class Settings {
             "navigation_ring_targets_2",
         };
 
+<<<<<<< HEAD
+=======
+        /**
+         * Sets navigation bar height in percent
+         * @hide
+         */
+        public static final String NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
+>>>>>>> c57bb41... Merge branch 'kitkat' of github.com:AOSPA/android_frameworks_base into kitkat-remix
 
         /**
          * Enable/disable statusbar network indicators
@@ -2874,6 +2882,7 @@ public final class Settings {
         public static final String STATUSBAR_CLOCK_STYLE = "statusbar_clock_style";
 
         /**
+<<<<<<< HEAD
          * TeloRadio enable
          * @hide
          */
@@ -2910,6 +2919,8 @@ public final class Settings {
         public static final String TELO_RADIO_GO3G_UNLOCK = "telo_radio_go_3g_unlock";
         
         /**
+=======
+>>>>>>> c57bb41... Merge branch 'kitkat' of github.com:AOSPA/android_frameworks_base into kitkat-remix
          * Setting for clock color
          * @hide
          */
@@ -2968,6 +2979,7 @@ public final class Settings {
 
         /**
          * Sets when quiet hours starts. This is stored in minutes from the start of the day.
+<<<<<<< HEAD
          * @hide
          */
         public static final String QUIET_HOURS_START = "quiet_hours_start";
@@ -2993,6 +3005,33 @@ public final class Settings {
          * Whether to remove the sound from outgoing notifications during quiet hours.
          * @hide
          */
+=======
+         * @hide
+         */
+        public static final String QUIET_HOURS_START = "quiet_hours_start";
+
+        /**
+         * Sets when quiet hours end. This is stored in minutes from the start of the day.
+         * @hide
+         */
+        public static final String QUIET_HOURS_END = "quiet_hours_end";
+
+        /**
+         * Whether to remove the sound from phone ringing during quiet hours.
+         * @hide
+         */
+        public static final String QUIET_HOURS_RINGER = "quiet_hours_ringer";
+
+        /** Weather to allow headsethook to launch voice commands
+         * @hide
+         */
+        public static final String HEADSETHOOK_LAUNCH_VOICE = "headsethook_launch_voice";
+
+        /**
+         * Whether to remove the sound from outgoing notifications during quiet hours.
+         * @hide
+         */
+>>>>>>> c57bb41... Merge branch 'kitkat' of github.com:AOSPA/android_frameworks_base into kitkat-remix
         public static final String QUIET_HOURS_MUTE = "quiet_hours_mute";
 
         /**
@@ -3147,6 +3186,7 @@ public final class Settings {
          * @hide
          */
         public static final String NOTIFICATION_CUSTOM_CARRIER_LABEL = "notification_custom_carrier_label";
+<<<<<<< HEAD
              
         /**
          *  TeloRadio Low power network 
@@ -3184,6 +3224,8 @@ public final class Settings {
          * @hide
          */
         public static final String SCREEN_RECORDER_BITRATE = "screen_recorder_bitrate";
+=======
+>>>>>>> c57bb41... Merge branch 'kitkat' of github.com:AOSPA/android_frameworks_base into kitkat-remix
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -3257,12 +3299,16 @@ public final class Settings {
             QUIET_HOURS_END,
             QUIET_HOURS_MUTE,
             QUIET_HOURS_STILL,
+<<<<<<< HEAD
             QUIET_HOURS_DIM,
             TELO_RADIO_ENABLED,
             TELO_RADIO_2G_WIFI,
             TELO_RADIO_LTE,
             TELO_RADIO_2G_SCREENOFF,
             TELO_RADIO_GO3G_UNLOCK
+=======
+            QUIET_HOURS_DIM
+>>>>>>> c57bb41... Merge branch 'kitkat' of github.com:AOSPA/android_frameworks_base into kitkat-remix
         };
 
         // Settings moved to Settings.Secure

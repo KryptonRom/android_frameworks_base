@@ -27,6 +27,22 @@
     <!-- QS Battery Tile -->
     <string name="quick_settings_battery_charging">Charging</string>
     <string name="quick_settings_battery_discharging">Discharging</string>
+
+    <!-- Recents Ram Bar -->
+    <string name="memory">RAM</string>
+    <!-- [CHAR LIMIT=10] Running services, summary of background processes -->
+    <string name="service_free_mem"><xliff:g id="memory">%1$s</xliff:g> free</string>
+    <!-- [CHAR LIMIT=10] Running services, summary of foreground processes -->
+    <string name="service_used_mem"><xliff:g id="memory">%1$s</xliff:g> used</string>
+
+    <!-- NFC Quicksettings tile -->
+    <string name="quick_settings_nfc_label">NFC on</string>
+    <string name="quick_settings_nfc_off_label">NFC off</string>
+
+    <!-- ADB ober network quicksettings tile -->
+    <string name="quick_settings_adb_label">ADB over network on</string>
+    <string name="quick_settings_adb_off_label">ADB over network off</string>
+
     <!-- QuickSettings: Immersive global mode [CHAR LIMIT=NONE] -->
     <string name="quick_settings_immersive_global_on_label">Immersive</string>
     <!-- QuickSettings: Immersive global mode (Off) [CHAR LIMIT=NONE] -->

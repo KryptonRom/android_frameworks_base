@@ -902,6 +902,7 @@ class QuickSettings {
                             = new QuickSettingsDualBasicTile(mContext);
                     immersiveTile.setDefaultContent();
                     immersiveTile.setTileId(Tile.IMMERSIVE);
+
                     // Front side (Toggles global immersive state On/Off)
                     immersiveTile.setFrontImageResource(R.drawable.ic_qs_immersive_global_off);
                     immersiveTile.setFrontTextResource(R.string.quick_settings_immersive_global_off_label);

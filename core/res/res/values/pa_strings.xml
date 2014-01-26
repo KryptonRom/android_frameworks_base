@@ -60,6 +60,7 @@
     <string name="animation_grow_shrink_left">Grow in (Left)</string>
     <string name="animation_grow_shrink_right">Grow in (Right)</string>
     <string name="action_null">Blank</string> 
+<<<<<<< HEAD
     
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_recordScreen">Record content being displayed</string>
@@ -67,4 +68,9 @@
     <string name="permdesc_recordScreen">Allows the app to
         record the users screen.</string>
 
+=======
+
+    <!-- Immersive mode confirmation: Pick confirmation window from bottom when status bar is visible -->
+    <string name="immersive_mode_confirmation_bottom">Swipe up from the bottom to exit full screen.</string>
+>>>>>>> c57bb41... Merge branch 'kitkat' of github.com:AOSPA/android_frameworks_base into kitkat-remix
 </resources>

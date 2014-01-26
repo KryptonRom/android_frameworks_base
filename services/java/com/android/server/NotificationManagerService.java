@@ -1281,9 +1281,12 @@ public class NotificationManagerService extends INotificationManager.Stub
                     Settings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
+<<<<<<< HEAD
                     Settings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
+=======
+>>>>>>> c57bb41... Merge branch 'kitkat' of github.com:AOSPA/android_frameworks_base into kitkat-remix
                     Settings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -1292,10 +1295,17 @@ public class NotificationManagerService extends INotificationManager.Stub
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QUIET_HOURS_START),
                     false, this, UserHandle.USER_ALL);
+<<<<<<< HEAD
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QUIET_HOURS_END),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
+=======
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QUIET_HOURS_END),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+>>>>>>> c57bb41... Merge branch 'kitkat' of github.com:AOSPA/android_frameworks_base into kitkat-remix
                     Settings.System.QUIET_HOURS_MUTE),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
