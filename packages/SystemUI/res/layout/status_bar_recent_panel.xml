@@ -31,6 +31,14 @@
     android:fitsSystemWindows="true"
     >
 
+    <FrameLayout
+        android:id="@+id/recents_bg_protect"
+        android:background="@drawable/status_bar_recents_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:fitsSystemWindows="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -88,8 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="75dp"
-                android:layout_alignParentBottom="true"
-				android:fitsSystemWindows="true">
+                android:layout_alignParentBottom="true">
 
                 <com.android.systemui.recent.RecentsVerticalScrollView
                     android:id="@+id/recents_container"
@@ -122,7 +129,7 @@
 					android:layout_height="50dp"
 					android:scaleType="center"
 					android:layout_gravity="top|right"
-					android:src="@drawable/ic_recents_clear" />
+					android:src="@drawable/ic_notify_clear" />
 
                 <include layout="@layout/status_bar_no_recent_apps"
                     android:id="@+id/recents_no_apps"
@@ -136,4 +143,5 @@
 		</LinearLayout>
 
 	</FrameLayout>
+
 </com.android.systemui.recent.RecentsPanelView>
