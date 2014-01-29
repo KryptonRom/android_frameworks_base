@@ -52,4 +52,25 @@
     <string name="quick_settings_location_mode_high_label">Alta</string>
     <string name="quick_settings_location_mode_battery_label">Batería</string>
     <string name="quick_settings_location_mode_sensors_label">Dispositivo</string>
+    
+    <!-- HALO -->
+    <string name="halo_dismiss">Descartar notificación</string>
+    <string name="halo_hide">Esconder</string>
+    <string name="halo_clear_all">Descartar todas las notificaciones</string>
+    <string name="halo_silence">Esconder y silenciar hasta que vuelvas a despertarlo</string>
+    <string name="halo_tutorial1">Hola! Yo soy halo!</string>
+    <string name="halo_tutorial2">Para moverme, 2 toques y arrastra</string>
+    <string name="halo_tutorial3">Arrastra en horizontal para navegar</string>
+    <string name="halo_battery_plugged">Cargando</string>
+    <string name="halo_battery_unplugged">Restante</string>
+    <string name="halo_battery_full">Lleno</string>
+    <string name="halo_aeroplane1">Avión</string>
+    <string name="halo_aeroplane2">Modo</string>
+    <string name="halo_wifi_on">WI-FI Encendido</string>
+    <string name="halo_wifi_off">WI-FI Apagado</string>
+    <string name="halo_signal_bars_4">Lleno</string>
+    <string name="halo_signal_bars_3">Tres barras</string>
+    <string name="halo_signal_bars_2">Dos barras</string>
+    <string name="halo_signal_bars_1">Una barra</string>
+    <string name="halo_signal_bars_none">Ninguna barra</string>
 </resources>
