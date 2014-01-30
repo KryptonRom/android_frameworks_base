@@ -66,6 +66,10 @@
     <!-- QuickSettings: Lightbulb tile [CHAR LIMIT=NONE] -->
     <string name="quick_settings_lightbulb_label">Lightbulb</string>
     <string name="quick_settings_lightbulb_off_label">Lightbulb Off</string>
+    <!-- USB Tether Tile [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_usb_tether_connected_label">USB Tethering Off</string>
+    <string name="quick_settings_usb_tether_on_label">USB Tethering</string>
+
     <!-- Dialog title for navigation bar button selection -->
     <string name="navbar_dialog_title">Choose action to assign</string>
     <string name="navbar_home_button">Home button</string>
@@ -90,6 +94,10 @@
     <!-- QuickSettings: Wifi AP Tile [CHAR LIMIT=NONE] -->
     <string name="quick_settings_wifi_ap_label">Wi-Fi AP</string>
     <string name="quick_settings_wifi_ap_off_label">Wi-Fi AP Off</string>
+    <!-- Quick Settings Bluetooth Extra Tile [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_bluetooth_not_discoverable_label">Not discoverable</string>
+    <string name="quick_settings_bluetooth_discoverable_label">Discoverable</string>
+    <string name="quick_settings_bluetooth_disabled">Disabled</string>
     <!-- Quick Settings Location Extra Tile [CHAR LIMIT=NONE] -->
     <string name="quick_settings_location_mode_high_label">High</string>
     <string name="quick_settings_location_mode_battery_label">Battery</string>
