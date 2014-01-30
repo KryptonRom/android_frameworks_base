@@ -2878,6 +2878,12 @@ public final class Settings {
         public static final String LOCKSCREEN_NOTIFICATIONS_PRIVACY_MODE = "lockscreen_notifications_privacy_mode";
 
         /**
+         * Defines the custom path to use for UI sound effects (null for default)
+         * @hide
+         */
+        public static final String CUSTOM_SOUND_EFFECTS_PATH = "custom_sound_effects_path";
+
+        /**
          * A list of packages to exclude from being displayed as lockscreen notifications.
          * This should be a string of packages separated by |
          * @hide
