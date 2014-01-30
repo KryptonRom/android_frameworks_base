@@ -2378,7 +2378,7 @@ public final class Settings {
          * @hide
          */
         public static final String NOTIFICATION_LIGHT_PULSE = "notification_light_pulse";
-
+        
         /**
          * What color to use for the notification LED by default
          * @hide
