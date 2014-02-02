@@ -2839,6 +2839,22 @@ public final class Settings {
         public static final String LOCKSCREEN_NOTIFICATIONS_WAKE_ON_NOTIFICATION = "lockscreen_notifications_wake_on_notification";
 
         /**
+         * HALO Properties (Color Settings)
+         * @hide
+         */
+        public static final String HALO_PROPERTIES_COLOR = "halo_properties_color";
+        /** @hide **/
+        public static final String HALO_CIRCLE_COLOR = "halo_circle_color";
+        /** @hide **/
+        public static final String HALO_BUBBLE_COLOR = "halo_bubble_color";
+        /** @hide **/
+        public static final String HALO_BUBBLE_TEXT_COLOR = "halo_bubble_text_color";
+        /** @hide **/
+        public static final String HALO_NUMBER_TEXT_COLOR = "halo_number_text_color";
+        /** @hide **/
+        public static final String HALO_NUMBER_CONTAINER_COLOR = "halo_number_container_color";
+
+        /**
          * Sets the count of notifications shown at once
          * @hide
          */
