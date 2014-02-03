@@ -83,6 +83,7 @@ import com.android.internal.statusbar.StatusBarIconList;
 import com.android.systemui.statusbar.phone.Ticker;
 import com.android.internal.widget.SizeAdaptiveLayout;
 import com.android.systemui.chaos.lab.gestureanywhere.GestureAnywhereView;
+import com.android.internal.util.omni.OmniSwitchConstants;
 import com.android.systemui.R;
 import com.android.systemui.RecentsComponent;
 import com.android.systemui.recent.RecentsActivity;
@@ -198,6 +199,9 @@ public abstract class BaseStatusBar extends SystemUI implements
         return mNotificationData;
     }
 
+    private boolean mOmniSwitchEnabled;
+    private boolean mOmniSwitchStarted;
+
     public IStatusBarService getStatusBarService() {
         return mBarService;
     }
@@ -206,7 +210,7 @@ public abstract class BaseStatusBar extends SystemUI implements
         return mDeviceProvisioned;
     }
 
-    private ContentObserver mProvisioningObserver = new ContentObserver(mHandler) {
+    private SettingsObserver mSettingsObserver = new SettingsObserver(mHandler) {
         @Override
         public void onChange(boolean selfChange) {
             final boolean provisioned = 0 != Settings.Global.getInt(
@@ -215,6 +219,9 @@ public abstract class BaseStatusBar extends SystemUI implements
                 mDeviceProvisioned = provisioned;
                 updateNotificationIcons();
             }
+            mOmniSwitchEnabled = Settings.System.getIntForUser(
+                    mContext.getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH,
+                    0, UserHandle.USER_CURRENT) == 1;
         }
     };
 
@@ -241,8 +248,6 @@ public abstract class BaseStatusBar extends SystemUI implements
                         Settings.System.IMMERSIVE_MODE, 0, UserHandle.USER_CURRENT);
           }
       };
-
-    private SettingsObserver mSettingsObserver = new SettingsObserver(mHandler);
 
     private RemoteViews.OnClickHandler mOnClickHandler = new RemoteViews.OnClickHandler() {
         @Override
@@ -284,6 +289,12 @@ public abstract class BaseStatusBar extends SystemUI implements
                 mCurrentUserId = intent.getIntExtra(Intent.EXTRA_USER_HANDLE, -1);
                 if (true) Log.v(TAG, "userId " + mCurrentUserId + " is in the house");
                 userSwitched(mCurrentUserId);
+            } else if (OmniSwitchConstants.ACTION_SERVICE_START.equals(action)) {
+                Log.v(TAG, "OmniSwitch service started");
+                mOmniSwitchStarted = true;
+            } else if (OmniSwitchConstants.ACTION_SERVICE_STOP.equals(action)) {
+                Log.v(TAG, "OmniSwitch service stoped");
+                mOmniSwitchStarted = false;
             }
         }
     };
@@ -297,10 +308,13 @@ public abstract class BaseStatusBar extends SystemUI implements
                 ServiceManager.checkService(DreamService.DREAM_SERVICE));
         mPowerManager = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
 
-        mProvisioningObserver.onChange(false); // set up
+        mSettingsObserver.onChange(false); // set up
         mContext.getContentResolver().registerContentObserver(
                 Settings.Global.getUriFor(Settings.Global.DEVICE_PROVISIONED), true,
-                mProvisioningObserver);
+                mSettingsObserver);
+        mContext.getContentResolver().registerContentObserver(
+                Settings.System.getUriFor(Settings.System.RECENTS_USE_OMNISWITCH), true,
+                mSettingsObserver, UserHandle.USER_ALL);
 
         mSettingsObserver.observe();
 
@@ -376,6 +390,8 @@ public abstract class BaseStatusBar extends SystemUI implements
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_USER_SWITCHED);
+        filter.addAction(OmniSwitchConstants.ACTION_SERVICE_START);
+        filter.addAction(OmniSwitchConstants.ACTION_SERVICE_STOP);
         mContext.registerReceiver(mBroadcastReceiver, filter);
         SidebarObserver observer = new SidebarObserver(mHandler);
         observer.observe();
@@ -692,26 +708,40 @@ public abstract class BaseStatusBar extends SystemUI implements
     }
 
     protected void toggleRecentsActivity() {
-        if (mRecents != null) {
-            mRecents.toggleRecents(mDisplay, mLayoutDirection, getStatusBarView(), mImmersiveModeStyle);
+        if (mOmniSwitchEnabled && mOmniSwitchStarted){
+            Intent showIntent = new Intent(OmniSwitchConstants.ACTION_TOGGLE_OVERLAY);
+            mContext.sendBroadcast(showIntent);
+        } else {
+            if (mRecents != null) {
+                mRecents.toggleRecents(mDisplay, mLayoutDirection, getStatusBarView(), mImmersiveModeStyle);
+            }
         }
     }
 
     protected void preloadRecentTasksList() {
-        if (mRecents != null) {
-            mRecents.preloadRecentTasksList();
+        if (!mOmniSwitchEnabled){
+            if (mRecents != null) {
+                mRecents.preloadRecentTasksList();
+            }
         }
     }
 
     protected void cancelPreloadingRecentTasksList() {
-        if (mRecents != null) {
-            mRecents.cancelPreloadingRecentTasksList();
+        if (!mOmniSwitchEnabled){
+            if (mRecents != null) {
+                mRecents.cancelPreloadingRecentTasksList();
+            }
         }
     }
 
     protected void closeRecents() {
-        if (mRecents != null) {
-            mRecents.closeRecents();
+        if (mOmniSwitchEnabled && mOmniSwitchStarted){
+            Intent hideIntent = new Intent(OmniSwitchConstants.ACTION_HIDE_OVERLAY);
+            mContext.sendBroadcast(hideIntent);
+        } else {
+            if (mRecents != null) {
+                mRecents.closeRecents();
+            }
         }
     }
 

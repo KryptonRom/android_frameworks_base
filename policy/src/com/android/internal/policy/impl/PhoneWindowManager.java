@@ -224,6 +224,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     PowerManager mPowerManager;
     IStatusBarService mStatusBarService;
     boolean mPreloadedRecentApps;
+    
     final Object mServiceAquireLock = new Object();
     Vibrator mVibrator; // Vibrator for giving feedback of orientation changes
     SearchManager mSearchManager;
@@ -458,6 +459,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     // What we do when the user long presses on home
     private int mLongPressOnHomeBehavior;
+    
+    // Tracks preloading of the recent apps screen
+    private boolean mRecentAppsPreloaded;
 
     // What we do when the user double-taps on home
     private int mDoubleTapOnHomeBehavior;
@@ -2626,7 +2630,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
 
     private void toggleRecentApps() {
-        mPreloadedRecentApps = false; // preloading no longer needs to be canceled
+        mRecentAppsPreloaded = false; // preloading no longer needs to be canceled
         sendCloseSystemWindows(SYSTEM_DIALOG_REASON_RECENT_APPS);
         try {
             IStatusBarService statusbar = getStatusBarService();
