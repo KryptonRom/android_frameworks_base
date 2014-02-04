@@ -2677,8 +2677,13 @@ public final class Settings {
          * @hide
          */
         public static final String SIP_ASK_ME_EACH_TIME = "SIP_ASK_ME_EACH_TIME";
-
+        
         /**
+		 * @hide
+		 */
+		public static final String ACTION_CFX_HOT_REBOOT = "cfx_hot_reboot";
+
+       /**
          * Pointer speed setting.
          * This is an integer value in a range between -7 and +7, so there are 15 possible values.
          *   -7 = slowest
