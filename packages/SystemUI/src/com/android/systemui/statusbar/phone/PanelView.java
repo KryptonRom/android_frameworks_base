@@ -72,7 +72,6 @@ public class PanelView extends FrameLayout {
     private View mHandleView;
     private LinearLayout mNotificationPanelContent;
     private QuickSettingsScrollView mQsPanelContent;
-    private HorizontalScrollView mNotifiShorcuts;
     private boolean mIsDynamicHeight = false;
     private int mContainerMinimumHeight = -1;
     private float mPeekHeight;
@@ -382,7 +381,6 @@ public class PanelView extends FrameLayout {
         mHandleView = findViewById(R.id.handle);
         mNotificationPanelContent = (LinearLayout) findViewById(R.id.notification_panel_content);
         mQsPanelContent = (QuickSettingsScrollView) findViewById(R.id.quicksettings_panel_content);
-        mNotifiShorcuts = (HorizontalScrollView) findViewById(R.id.custom_notification_scrollview);
 
         loadDimens();
 
@@ -589,9 +587,6 @@ public class PanelView extends FrameLayout {
         }
         if (mQsPanelContent != null) {
             height += mQsPanelContent.getMeasuredHeight();
-        }
-        if (mNotifiShorcuts != null) {
-            height += mNotifiShorcuts.getMeasuredHeight();
         }
         // Our window might have a dropshadow
         height += getPaddingBottom();
