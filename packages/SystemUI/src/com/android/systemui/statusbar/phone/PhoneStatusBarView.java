@@ -31,6 +31,7 @@ import android.view.GestureDetector;
 import android.os.PowerManager;
 import android.provider.Settings;
 
+import com.android.internal.util.gesture.EdgeGesturePosition;
 import com.android.systemui.EventLogTags;
 import com.android.systemui.R;
 
@@ -200,6 +201,7 @@ public class PhoneStatusBarView extends PanelBar {
         if (mScrimColor != 0 && ActivityManager.isHighEndGfx()) {
             mBar.mStatusBarWindow.setBackgroundColor(0);
         }
+        mBar.restorePieTriggerMask();
     }
 
     @Override
@@ -208,6 +210,15 @@ public class PhoneStatusBarView extends PanelBar {
         if (openPanel != mLastFullyOpenedPanel) {
             openPanel.sendAccessibilityEvent(AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED);
         }
+
+        // Panel is open disable bottom edge and enable all other
+        // if the user activated them
+        if (mShouldFade) {
+            mBar.updatePieTriggerMask(EdgeGesturePosition.LEFT.FLAG
+                    | EdgeGesturePosition.RIGHT.FLAG
+                    | EdgeGesturePosition.TOP.FLAG, true);
+        }
+
         mFadingPanel = openPanel;
         mLastFullyOpenedPanel = openPanel;
         mShouldFade = true; // now you own the fade, mister
