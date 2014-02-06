@@ -78,7 +78,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NavigationBarView extends LinearLayout implements NavigationCallback {
+
+public class NavigationBarView extends LinearLayout implements BaseStatusBar.NavigationBarCallback {
     final static boolean DEBUG = false;
     final static String TAG = "PhoneStatusBar/NavigationBarView";
 
@@ -267,8 +268,6 @@ public class NavigationBarView extends LinearLayout implements NavigationCallbac
         mLeftInLandscape = false;
         mDelegateHelper = new DelegateViewHelper(this);
 
-        RecentsActivity.setNavigationCallback(this);
-
         mBarTransitions = new NavigationBarTransitions(this);
 
         disableCameraByUser();
@@ -393,9 +392,11 @@ public class NavigationBarView extends LinearLayout implements NavigationCallbac
         setDisabledFlags(mDisabledFlags, true);
     }
 
+	@Override
 	public void setNavigationIconHints(int hints) {
 	        setNavigationIconHints(NavigationCallback.NAVBAR_BACK_HINT, hints, false);
     }
+    
     private void makeBar() {
         if (mButtonsConfig.isEmpty() || mButtonsConfig == null) {
             return;
@@ -694,6 +695,7 @@ public class NavigationBarView extends LinearLayout implements NavigationCallbac
         return mNavigationIconHints;
     }
 
+    @Override
     public void setDisabledFlags(int disabledFlags) {
         setDisabledFlags(disabledFlags, false);
     }
@@ -842,6 +844,7 @@ public class NavigationBarView extends LinearLayout implements NavigationCallbac
         }
     }
 
+    @Override
     public void setMenuVisibility(final boolean show) {
         setMenuVisibility(show, false);
     }
@@ -1106,6 +1109,15 @@ public class NavigationBarView extends LinearLayout implements NavigationCallbac
         // construct the navigationbar
         makeBar();
 
+    }
+
+    public void setForgroundColor(Drawable drawable) {
+        if (mRot0 != null) {
+            mRot0.setForeground(drawable);
+        }
+        if (mRot90 != null) {
+            mRot90.setForeground(drawable);
+        }
     }
 
     public void dump(FileDescriptor fd, PrintWriter pw, String[] args) {
