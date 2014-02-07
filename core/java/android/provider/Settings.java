@@ -4541,6 +4541,12 @@ public final class Settings {
          */
         public static final String LOCK_BEFORE_UNLOCK = "lock_before_unlock";
 
+         /**
+         * Determines the width and height of the LockPatternView widget
+         * @hide
+         */
+        public static final String LOCK_PATTERN_SIZE = "lock_pattern_size";
+
         /**
          * Whether lock pattern will vibrate as user enters (0 = false, 1 =
          * true)
