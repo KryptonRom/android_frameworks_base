@@ -53,12 +53,9 @@ interface IPowerManager
 
     // sets the attention light (used by phone app only)
     void setAttentionLight(boolean on, int color);
-<<<<<<< HEAD
-=======
 
     void cpuBoost(int duration);
     
     // blocked wakelock support
     String getSeenWakeLocks();
->>>>>>> 74ff12d... wakelock blocking (1/2)
 }

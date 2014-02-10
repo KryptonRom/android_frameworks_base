@@ -2737,9 +2737,6 @@ public final class Settings {
         public static final String HALO_NINJA = "halo_ninja";
 
         /**
-<<<<<<< HEAD
-         * HALO message box?, should default to 1 (yes, show message box on incoming notification)
-=======
          * @hide
          */
         public static final String WAKELOCK_BLOCKING_ENABLED = "wakelock_blocking_enabled";
@@ -2750,13 +2747,7 @@ public final class Settings {
         public static final String WAKELOCK_BLOCKING_LIST = "wakelock_blocking_list";
 
         /**
-         * Electronic beam animation mode
-         * 0 = off,
-         * 1 = always horizontal,
-         * 2 = always vertical,
-         * 3 = dependent on orientation
-         * 4 = scale animation
->>>>>>> 74ff12d... wakelock blocking (1/2)
+         * HALO message box?, should default to 1 (yes, show message box on incoming notification)
          * @hide
          */
         public static final String HALO_MSGBOX = "halo_msgbox";
