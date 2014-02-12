@@ -65,8 +65,6 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
 public class NavigationBarView extends LinearLayout implements NavigationCallback {
-
-public class NavigationBarView extends LinearLayout implements BaseStatusBar.NavigationBarCallback {
     final static boolean DEBUG = false;
     final static String TAG = "PhoneStatusBar/NavigationBarView";
 
@@ -415,7 +413,6 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         setDisabledFlags(mDisabledFlags, true);
     }
 
-    @Override
     public void setNavigationIconHints(int hints) {
         setNavigationIconHints(hints, false);
     }
@@ -479,7 +476,6 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         return mNavigationIconHints;
     }
 
-    @Override
     public void setDisabledFlags(int disabledFlags) {
         setDisabledFlags(disabledFlags, false);
     }
@@ -616,7 +612,6 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         }
     }
 
-    @Override
     public void setMenuVisibility(final boolean show) {
         setMenuVisibility(show, false);
     }
@@ -800,15 +795,6 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
                 return "GONE";
             default:
                 return "VISIBLE";
-        }
-    }
-
-    public void setForgroundColor(Drawable drawable) {
-        if (mRot0 != null) {
-            mRot0.setForeground(drawable);
-        }
-        if (mRot90 != null) {
-            mRot90.setForeground(drawable);
         }
     }
 
