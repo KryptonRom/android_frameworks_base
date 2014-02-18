@@ -17,6 +17,7 @@
 package com.android.internal.policy.impl.keyguard;
 
 import android.graphics.Bitmap;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -200,6 +201,15 @@ public class KeyguardServiceWrapper implements IKeyguardService {
     public void setWallpaper(Bitmap bmp) {
         // Not used by PhoneWindowManager
     }
+
+    public void showCustomIntent(Intent intent) {
+        try {
+            mService.showCustomIntent(intent);
+        } catch (RemoteException e) {
+            Slog.w(TAG , "Remote Exception", e);
+        }
+    }
+
     public void showAssistant() {
         // Not used by PhoneWindowManager
     }
