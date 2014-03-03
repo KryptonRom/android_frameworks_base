@@ -23,6 +23,7 @@ import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.os.PowerManager;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;

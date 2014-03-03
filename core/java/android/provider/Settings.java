@@ -3037,14 +3037,6 @@ public final class Settings {
         public static final String QUICK_SETTINGS_ADB_TILE = "quick_settings_adb_tile";
 
         /**
-         * Navigation controls to Use
-         *
-         * @hide
-         */
-
-        public static final String NAV_BUTTONS = "nav_buttons";
-
-        /**
          * Show or hide clock
          * 0 - hide
          * 1 - show (default)
