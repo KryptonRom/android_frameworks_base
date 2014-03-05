@@ -2943,19 +2943,6 @@ public final class Settings {
          */
         public static final String REMINDER_ALERT_RINGER = "reminder_alert_ringer";
 
-
-        /**
-         * Custom navring actions
-         *
-         * @hide
-         */
-        public static final String[] NAVIGATION_RING_TARGETS = new String[] {
-            "navigation_ring_targets_0",
-            "navigation_ring_targets_1",
-            "navigation_ring_targets_2",
-        };
-
-
         /**
          * Enable/disable statusbar network indicators
          * @hide

@@ -197,10 +197,6 @@ public class GlowPadView extends View {
                 internalSetTargetResources(mNewTargetResources);
                 mNewTargetResources = 0;
                 hideTargets(false, false);
-            } else if (mNewTargetDrawables != null) {
-                internalSetTargetResources(mNewTargetDrawables);
-                mNewTargetDrawables = null;
-                hideTargets(false, false);
             }
             mAnimatingTargets = false;
         }
@@ -510,7 +506,6 @@ public class GlowPadView extends View {
                 // Force ring and targets to finish animation to final expanded state
                 mTargetAnimations.stop();
             }
-            hideTargets(false, false);
         } else {
             // Animate handle back to the center based on current state.
             hideGlow(HIDE_ANIMATION_DURATION, 0, 0.0f, mResetListenerWithPing);
@@ -694,7 +689,7 @@ public class GlowPadView extends View {
         }
     }
 
-    public void setTargetResources(ArrayList<TargetDrawable> drawList) {
+	public void setTargetResources(ArrayList<TargetDrawable> drawList) {
         if (mAnimatingTargets) {
             // postpone this change until we return to the initial state
             mNewTargetDrawables = drawList;
@@ -705,10 +700,6 @@ public class GlowPadView extends View {
 
     public int getTargetResourceId() {
         return mTargetResourceId;
-    }
-
-    public ArrayList<TargetDrawable> getTargetDrawables() {
-        return mTargetDrawables;
     }
 
     /**
@@ -752,7 +743,7 @@ public class GlowPadView extends View {
     public int getDirectionDescriptionsResourceId() {
         return mDirectionDescriptionsResourceId;
     }
-
+    
     public boolean getMagneticTargets() {
         return mMagneticTargets;
     }
@@ -1358,9 +1349,11 @@ public class GlowPadView extends View {
     }
 
     private String getTargetDescription(int index) {
+
         if (mTargetDescriptionsResourceId == 0) {
             return null;
         }
+
         if (mTargetDescriptions == null || mTargetDescriptions.isEmpty()) {
             mTargetDescriptions = loadDescriptions(mTargetDescriptionsResourceId);
             if (mTargetDrawables.size() != mTargetDescriptions.size()) {
@@ -1373,9 +1366,11 @@ public class GlowPadView extends View {
     }
 
     private String getDirectionDescription(int index) {
+
         if (mDirectionDescriptionsResourceId == 0) {
             return null;
         }
+
         if (mDirectionDescriptions == null || mDirectionDescriptions.isEmpty()) {
             mDirectionDescriptions = loadDescriptions(mDirectionDescriptionsResourceId);
             if (mTargetDrawables.size() != mDirectionDescriptions.size()) {
