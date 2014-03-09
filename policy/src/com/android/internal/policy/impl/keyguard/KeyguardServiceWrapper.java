@@ -201,7 +201,7 @@ public class KeyguardServiceWrapper implements IKeyguardService {
     public void setWallpaper(Bitmap bmp) {
         // Not used by PhoneWindowManager
     }
-
+    
     public void showCustomIntent(Intent intent) {
         try {
             mService.showCustomIntent(intent);
@@ -209,7 +209,7 @@ public class KeyguardServiceWrapper implements IKeyguardService {
             Slog.w(TAG , "Remote Exception", e);
         }
     }
-
+    
     public void showAssistant() {
         // Not used by PhoneWindowManager
     }

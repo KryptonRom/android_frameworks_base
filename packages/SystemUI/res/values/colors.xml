@@ -50,9 +50,6 @@
     <drawable name="notification_item_background_color_pressed">#ff257390</drawable>
     <color name="notification_shortcut_color">#FFFFFFFF</color>
 
-    <!-- Navigation bar -->
-    <color name="navigationbar_button_default_color">#FFFFFFFF</color>
-
     <!-- Pie controls -->
     <color name="pie_overlay_color">#ff000000</color>
     <color name="pie_snap_color">#ffffffff</color>

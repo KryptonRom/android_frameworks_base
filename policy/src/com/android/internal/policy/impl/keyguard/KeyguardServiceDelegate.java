@@ -262,7 +262,7 @@ public class KeyguardServiceDelegate {
             mKeyguardService.showAssistant();
         }
     }
-
+    
     public void showCustomIntent(Intent intent) {
         if (mKeyguardService != null) {
             mKeyguardService.showCustomIntent(intent);

@@ -122,7 +122,7 @@ interface IWindowManager
     boolean inKeyguardRestrictedInputMode();
     void dismissKeyguard();
 
-    /**
+	/**
      * Tell keyguard to show a custom intent after asking for the user's
      * credentials.
      * @hide

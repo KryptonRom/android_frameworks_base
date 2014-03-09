@@ -51,7 +51,7 @@ public class ButtonsConstants {
     public static final String ICON_EMPTY = "empty";
     public static final String SYSTEM_ICON_IDENTIFIER = "system_shortcut=";
     public static final String ACTION_DELIMITER = "|";
-
+    
     public static final String NAVIGATION_CONFIG_DEFAULT =
           ACTION_BACK    + ACTION_DELIMITER
         + ACTION_NULL    + ACTION_DELIMITER
@@ -61,11 +61,6 @@ public class ButtonsConstants {
         + ICON_EMPTY     + ACTION_DELIMITER
         + ACTION_RECENTS + ACTION_DELIMITER
         + ACTION_NULL    + ACTION_DELIMITER
-        + ICON_EMPTY;
-
-    public static final String NAV_RING_CONFIG_DEFAULT =
-          ACTION_ASSIST + ACTION_DELIMITER
-        + ACTION_NULL   + ACTION_DELIMITER
         + ICON_EMPTY;
 
     public static final String PIE_SECOND_LAYER_CONFIG_DEFAULT =
@@ -84,5 +79,4 @@ public class ButtonsConstants {
         + ACTION_IME           + ACTION_DELIMITER
         + ACTION_NULL          + ACTION_DELIMITER
         + ICON_EMPTY;
-
 }

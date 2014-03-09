@@ -19,26 +19,25 @@ package com.android.systemui.statusbar;
 
 import android.annotation.ChaosLab;
 import android.annotation.ChaosLab.Classification;
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
+import android.app.Activity;
 import android.app.ActivityManagerNative;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
+import android.content.pm.ResolveInfo;
 import android.content.BroadcastReceiver;
+import android.content.ServiceConnection;
 import android.content.ContentResolver;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.content.ServiceConnection;
 import android.database.ContentObserver;
 import android.graphics.PixelFormat;
 import android.graphics.Bitmap;
@@ -53,8 +52,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
-import android.os.Message;
 import android.os.Messenger;
+import android.os.Message;
 import android.os.PowerManager;
 import android.os.Process;
 import android.os.RemoteException;
@@ -92,9 +91,9 @@ import com.android.internal.statusbar.StatusBarIcon;
 import com.android.internal.statusbar.StatusBarIconList;
 import com.android.systemui.statusbar.phone.Ticker;
 import com.android.internal.widget.SizeAdaptiveLayout;
+import com.android.internal.util.slim.DeviceUtils;
 import com.android.systemui.chaos.lab.gestureanywhere.GestureAnywhereView;
 import com.android.internal.util.omni.OmniSwitchConstants;
-import com.android.internal.util.slim.DeviceUtils;
 import com.android.systemui.R;
 import com.android.systemui.RecentsComponent;
 import com.android.systemui.recent.RecentsActivity;
@@ -107,8 +106,8 @@ import com.android.systemui.statusbar.policy.NotificationRowLayout;
 import com.android.systemui.statusbar.policy.PieController;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
+import java.util.List;
 
 public abstract class BaseStatusBar extends SystemUI implements
         CommandQueue.Callbacks {
@@ -705,24 +704,20 @@ public abstract class BaseStatusBar extends SystemUI implements
         mHandler.sendEmptyMessage(msg);
     }
 
-    @Override
     public void setButtonDrawable(int buttonId, int iconId) {}
 
-    @Override
     public void toggleScreenshot() {
         int msg = MSG_TOGGLE_SCREENSHOT;
         mHandler.removeMessages(msg);
         mHandler.sendEmptyMessage(msg);
     }
 
-    @Override
     public void toggleLastApp() {
         int msg = MSG_TOGGLE_LAST_APP;
         mHandler.removeMessages(msg);
         mHandler.sendEmptyMessage(msg);
     }
 
-    @Override
     public void toggleKillApp() {
         int msg = MSG_TOGGLE_KILL_APP;
         mHandler.removeMessages(msg);
@@ -752,19 +747,6 @@ public abstract class BaseStatusBar extends SystemUI implements
         LinearLayout tmpRoot = new LinearLayout(mContext);
         mSearchPanelView = (SearchPanelView) LayoutInflater.from(mContext).inflate(
                  R.layout.status_bar_search_panel, tmpRoot, false);
-
-         boolean navbarCanMove = Settings.System.getIntForUser(mContext.getContentResolver(),
-                   Settings.System.NAVIGATION_BAR_CAN_MOVE,
-                   DeviceUtils.isPhone(mContext) ? 1 : 0, UserHandle.USER_CURRENT) == 1;
-
-         if (!isScreenPortrait() && !navbarCanMove) {
-                mSearchPanelView = (SearchPanelView) LayoutInflater.from(mContext).inflate(
-                         R.layout.status_bar_search_panel_real_landscape, tmpRoot, false);
-         } else {
-                mSearchPanelView = (SearchPanelView) LayoutInflater.from(mContext).inflate(
-                         R.layout.status_bar_search_panel, tmpRoot, false);
-         }
-
         mSearchPanelView.setOnTouchListener(
                  new TouchOutsideListener(MSG_CLOSE_SEARCH_PANEL, mSearchPanelView));
         mSearchPanelView.setVisibility(View.GONE);
@@ -1673,12 +1655,7 @@ public abstract class BaseStatusBar extends SystemUI implements
             mPieController.restorePieTriggerMask();
         }
     }
-
-    private boolean isScreenPortrait() {
-        return mContext.getResources()
-            .getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
-    }
-
+    
     Runnable mKillTask = new Runnable() {
         public void run() {
             final Intent intent = new Intent(Intent.ACTION_MAIN);

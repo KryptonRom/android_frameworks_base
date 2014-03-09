@@ -29,7 +29,7 @@ oneway interface IStatusBar
     void removeNotification(IBinder key);
     void disable(int state);
     void animateExpandNotificationsPanel();
-    void animateExpandSettingsPanel(boolean flip);
+    void animateExpandSettingsPanel();
     void animateCollapsePanels();
     void setSystemUiVisibility(int vis, int mask);
     void topAppWindowChanged(boolean menuVisible);

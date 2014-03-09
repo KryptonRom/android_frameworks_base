@@ -28,8 +28,6 @@ import com.android.internal.statusbar.IStatusBarService;
 import com.android.systemui.R;
 import com.android.systemui.statusbar.policy.KeyButtonView;
 
-import java.util.List;
-
 public final class NavigationBarTransitions extends BarTransitions {
 
     private static final float KEYGUARD_QUIESCENT_ALPHA = 0.5f;
@@ -79,27 +77,9 @@ public final class NavigationBarTransitions extends BarTransitions {
     private void applyMode(int mode, boolean animate, boolean force) {
         // apply to key buttons
         final float alpha = alphaForMode(mode);
-        final View back = mView.getBackButton();
-        final View home = mView.getHomeButton();
-        final View recent = mView.getRecentsButton();
-        if (back != null) {
-            setKeyButtonViewQuiescentAlpha(back, alpha, animate);
-        }
-        if (home != null) {
-            setKeyButtonViewQuiescentAlpha(home, alpha, animate);
-        }
-        if (recent != null) {
-            setKeyButtonViewQuiescentAlpha(recent, alpha, animate);
-        }
-        List<Integer> buttonIdList = mView.getButtonIdList();
-        for (int i = 0; i < buttonIdList.size(); i++) {
-            final View customButton = mView.getCustomButton(buttonIdList.get(i));
-            if (customButton != null) {
-                setKeyButtonViewQuiescentAlpha(customButton, alpha, animate);
-            }
-        }
-        setKeyButtonViewQuiescentAlpha(mView.getLeftMenuButton(), alpha, animate);
-        setKeyButtonViewQuiescentAlpha(mView.getRightMenuButton(), alpha, animate);
+        setKeyButtonViewQuiescentAlpha(mView.getHomeButton(), alpha, animate);
+        setKeyButtonViewQuiescentAlpha(mView.getRecentsButton(), alpha, animate);
+        setKeyButtonViewQuiescentAlpha(mView.getMenuButton(), alpha, animate);
 
         setKeyButtonViewQuiescentAlpha(mView.getSearchLight(), KEYGUARD_QUIESCENT_ALPHA, animate);
         setKeyButtonViewQuiescentAlpha(mView.getCameraButton(), KEYGUARD_QUIESCENT_ALPHA, animate);
@@ -120,8 +100,7 @@ public final class NavigationBarTransitions extends BarTransitions {
         backAlpha = maxVisibleQuiescentAlpha(backAlpha, mView.getCameraButton());
         backAlpha = maxVisibleQuiescentAlpha(backAlpha, mView.getHomeButton());
         backAlpha = maxVisibleQuiescentAlpha(backAlpha, mView.getRecentsButton());
-        backAlpha = maxVisibleQuiescentAlpha(backAlpha, mView.getLeftMenuButton());
-        backAlpha = maxVisibleQuiescentAlpha(backAlpha, mView.getRightMenuButton());
+        backAlpha = maxVisibleQuiescentAlpha(backAlpha, mView.getMenuButton());
         if (backAlpha > 0) {
             setKeyButtonViewQuiescentAlpha(mView.getBackButton(), backAlpha, animate);
         }
