@@ -24,11 +24,9 @@ import android.app.ActivityManager;
 import android.app.PendingIntent;
 import android.app.SearchManager;
 import android.app.admin.DevicePolicyManager;
-import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
@@ -87,9 +85,6 @@ public class KeyguardSelectorView extends LinearLayout implements KeyguardSecuri
     private int mTargetOffset;
     private boolean mIsScreenLarge;
     private GestureDetector mDoubleTapGesture;
-
-    private UnlockReceiver mUnlockReceiver;
-    private IntentFilter mUnlockFilter;
 
     OnTriggerListener mOnTriggerListener = new OnTriggerListener() {
 
@@ -162,10 +157,6 @@ if (mStoredTargets == null) {
 
         }
 
-        public void onTargetChange(View v, final int target) {
-
-        }
-
     };
 
     KeyguardUpdateMonitorCallback mUpdateCallback = new KeyguardUpdateMonitorCallback() {
@@ -216,15 +207,7 @@ if (mStoredTargets == null) {
     public KeyguardSelectorView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mLockPatternUtils = new LockPatternUtils(getContext());
-<<<<<<< HEAD
         mTargetOffset = LockscreenTargetUtils.getTargetOffset(context);
-=======
-        if (mUnlockFilter == null) {
-            mUnlockFilter = new IntentFilter();
-            mUnlockFilter.addAction(UnlockReceiver.ACTION_UNLOCK_RECEIVER);
-        }
-        if (mUnlockReceiver == null) mUnlockReceiver = new UnlockReceiver();
->>>>>>> b94dd0e... Custom Navigation Ring FW part
     }
 
     @Override
@@ -548,7 +531,6 @@ if (mStoredTargets == null) {
                 hideBouncer(mSecurityMessageDisplay, mFadeView, mBouncerFrame, duration);
     }
 
-<<<<<<< HEAD
     public void updateLockscreenBattery(KeyguardUpdateMonitor.BatteryStatus status) {
         if (Settings.System.getIntForUser(
                 mContext.getContentResolver(),
@@ -569,28 +551,6 @@ if (mStoredTargets == null) {
             mGlowPadView.setArc(mBatteryLevel * 3.6f, Color.HSVToColor(0x80, new float[]{ hue, 1.f, 1.f }));
         } else {
             mGlowPadView.setArc(0, 0);
-=======
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        mContext.unregisterReceiver(mUnlockReceiver);
-    }
-
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        mContext.registerReceiver(mUnlockReceiver, mUnlockFilter);
-    }
-    public class UnlockReceiver extends BroadcastReceiver {
-        public static final String ACTION_UNLOCK_RECEIVER = "com.android.lockscreen.ACTION_UNLOCK_RECEIVER";
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (action.equals(ACTION_UNLOCK_RECEIVER)) {
-                mCallback.userActivity(0);
-                mCallback.dismiss(false);
-            }
->>>>>>> b94dd0e... Custom Navigation Ring FW part
         }
     }
 }
