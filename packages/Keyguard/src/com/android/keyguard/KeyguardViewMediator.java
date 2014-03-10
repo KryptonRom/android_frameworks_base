@@ -1146,6 +1146,9 @@ public class KeyguardViewMediator {
                 case SHOW_ASSISTANT:
                     handleShowAssistant();
                     break;
+                case START_CUSTOM_INTENT:
+                    handleShowCustomIntent((Intent) msg.obj);
+                    break;
                 case DISPATCH_EVENT:
                     handleDispatchEvent((MotionEvent) msg.obj);
                     break;
@@ -1428,10 +1431,14 @@ public class KeyguardViewMediator {
     public void handleShowAssistant() {
         mKeyguardViewManager.showAssistant();
     }
-    
+
     public void showCustomIntent(Intent intent) {
         Message msg = mHandler.obtainMessage(START_CUSTOM_INTENT, intent);
         mHandler.sendMessage(msg);
+    }
+
+    public void handleShowCustomIntent(Intent intent) {
+        mKeyguardViewManager.showCustomIntent(intent);
     }
 
     private boolean isAssistantAvailable() {

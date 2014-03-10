@@ -97,7 +97,7 @@ public class TvStatusBar extends BaseStatusBar {
     @Override // CommandQueue
     public void setAutoRotate(boolean enabled) {
     }
-    
+
     @Override // CommandQueue
     public void toggleNotificationShade() {
     }
@@ -155,7 +155,7 @@ public class TvStatusBar extends BaseStatusBar {
     }
 
     @Override
-    public void animateExpandSettingsPanel() {
+    public void animateExpandSettingsPanel(boolean flip) {
     }
 
     @Override

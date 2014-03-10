@@ -146,7 +146,7 @@ public class StatusBarManagerService extends IStatusBarService.Stub
 
         if (mBar != null) {
             try {
-                mBar.animateExpandSettingsPanel();
+                mBar.animateExpandSettingsPanel(true);
             } catch (RemoteException ex) {
             }
         }
@@ -432,7 +432,7 @@ public class StatusBarManagerService extends IStatusBarService.Stub
         }
     }
 
-	@Override
+    @Override
     public void toggleNotificationShade() {
         if (mBar != null) {
             try {

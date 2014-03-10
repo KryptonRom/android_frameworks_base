@@ -15,8 +15,8 @@
  */
 package com.android.internal.policy;
 
-import android.view.MotionEvent;
 import android.content.Intent;
+import android.view.MotionEvent;
 
 import com.android.internal.policy.IKeyguardShowCallback;
 import com.android.internal.policy.IKeyguardExitCallback;

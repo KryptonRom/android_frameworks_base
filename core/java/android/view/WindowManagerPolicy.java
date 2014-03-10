@@ -1005,12 +1005,12 @@ public interface WindowManagerPolicy {
      */
     public boolean isKeyguardSecure();
 
-	/**
+    /**
      * Ask keyguard to invoke a custom intent after dismissing keyguard
      * @hide
      */
     public void showCustomIntentOnKeyguard(Intent intent);
-	
+
     /**
      * inKeyguardRestrictedKeyInputMode
      *
